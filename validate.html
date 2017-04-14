@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja-JP">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <title>バリデーション</title>
+</head>
+<body>
+    <div>
+        <form action="">
+            <input type="password" class="fn-pass">
+            <input type="checkbox" class="fn-showPass" onClick="switchText(this)">
+        </form>
+    </div>
+
+    <script>
+    var t = document.querySelector('.fn-pass');
+
+    var getPrevElem = function(e) {
+        var el = e.previousElementSibling;
+        if( el ) {
+            return el;
+        }
+    }
+
+    var switchText = function(e) {
+        var target = getPrevElem(e);
+        if( target !== undefined ) {
+            if( e.checked ) {
+                target.setAttribute('type', 'text');
+            } else {
+                target.setAttribute('type', 'password');
+            }
+        }
+    }
+
+    var checkForm = function(e) {
+        var focusEl = document.activeElement;
+        if( e === focusEl ) {
+            console.log('hoge');
+        } else {
+            console.log('huga');
+        }
+    }
+
+    t.onclick = function(){
+        checkForm(t);
+    };
+    </script>
+</body>
+</html>
